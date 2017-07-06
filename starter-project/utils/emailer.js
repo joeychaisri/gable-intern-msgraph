@@ -39,30 +39,7 @@ function getEmailContent(name, sharingLink) {
  * @return the message object to send over the wire
  */
 function wrapEmail(content, recipient, file) {
-  const attachments = [{
-    '@odata.type': '#microsoft.graph.fileAttachment',
-    ContentBytes: file,
-    Name: 'mypic.jpg'
-  }];
-  const emailAsPayload = {
-    Message: {
-      Subject: 'Welcome to Microsoft Graph development with Node.js and the Microsoft Graph Connect sample',
-      Body: {
-        ContentType: 'HTML',
-        Content: content
-      },
-      ToRecipients: [
-        {
-          EmailAddress: {
-            Address: recipient
-          }
-        }
-      ]
-    },
-    SaveToSentItems: true,
-    Attachments: attachments
-  };
-  return emailAsPayload;
+
 }
 
 /**

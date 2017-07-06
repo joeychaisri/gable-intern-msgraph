@@ -1,0 +1,22 @@
+<div class="ms-Grid">
+  <div class="ms-Grid-row">
+    <!-- App navigation bar markup. -->
+    <div class="ms-NavBar">
+      <ul class="ms-NavBar-items">
+        <li class="navbar-header">Microsoft Graph Connect sample</li>
+      </ul>
+    </div>
+
+    <!-- App main content markup. -->
+    <div class="ms-Grid-col ms-u-mdPush1 ms-u-md9 ms-u-lgPush1 ms-u-lg6">
+      <div>
+        <h1 class="ms-font-xl">Contacts for {{name}}</h1>
+        <ul>
+          {{#each contacts}}
+          <li class="ms-font-m">{{displayName}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
