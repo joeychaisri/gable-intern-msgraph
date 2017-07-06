@@ -13,6 +13,6 @@ module.exports = {
     responseType: 'code',
     validateIssuer: false, // For development only
     responseMode: 'query',
-    scope: ['User.Read', 'Contacts.Read']
+    scope: ['User.Read', 'Contacts.Read','Calendars.ReadWrite']
   }
 };

@@ -28,6 +28,15 @@ function getUserContact(accessToken, callback) {
     });
 }
 
+function getUserEvent(accessToken, callback) {
+  request
+    .get('https://graph.microsoft.com/v1.0/me/events?$select=subject,body,bodyPreview,organizer,attendees,start,end,location')
+    .set('Authorization', 'Bearer ' + accessToken)
+    .end((err, res) => {
+      callback(err, res);
+    });
+}
+
 /**
  * Generates a GET request for the user's profile photo.
  * @param {string} accessToken The access token to send with the request.
@@ -115,3 +124,4 @@ exports.uploadFile = uploadFile;
 exports.getSharingLink = getSharingLink;
 exports.postSendMail = postSendMail;
 exports.getUserContact = getUserContact;
+exports.getUserEvent = getUserEvent;

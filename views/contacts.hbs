@@ -3,7 +3,7 @@
     <!-- App navigation bar markup. -->
     <div class="ms-NavBar">
       <ul class="ms-NavBar-items">
-        <li class="navbar-header">Microsoft Graph Connect sample</li>
+        <li class="navbar-header">Microsoft Graph Connect sample by Joey Pathompong</li>
       </ul>
     </div>
 
@@ -14,6 +14,14 @@
         <ul>
           {{#each contacts}}
           <li class="ms-font-m">{{displayName}}</li>
+          {{/each}}
+        </ul>
+        <ul>
+         <h1 class="ms-font-xl">All event from calendars</h1>
+          {{#each events}}
+          <li class="ms-font-m">{{subject}}</li>
+          <p class="ms-font-m">{{start.dateTime}}</p>
+          <hr/>
           {{/each}}
         </ul>
       </div>

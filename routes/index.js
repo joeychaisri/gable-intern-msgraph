@@ -57,9 +57,28 @@ router.get('/contacts',
     const name = req.user.profile.displayName;
     graphHelper.getUserContact(req.user.accessToken, (err, contacts) => {
       console.log('People!');
-      res.render('contacts', { contacts: contacts.body.value, name: name });
-    });
+      //  console.log(contacts.body.value);
+
+    graphHelper.getUserEvent(req.user.accessToken, (err, events) => {
+      console.log('Event!');
+      
+      res.render('contacts', { contacts: contacts.body.value, name: name , events: events.body.value});
+      // res.render('contacts', { events: events.body.value, name: name });
+      
+    });     
+    });   
   });
+
+  // router.get('/contacts',
+  // (req, res) => {
+  //   const name = req.user.profile.displayName;
+  //   graphHelper.getUserContact(req.user.accessToken, (err, contacts) => {
+  //     console.log('People!');
+  //     res.render('contacts', { contacts: contacts.body.value, name: name });
+  //   });
+  // });
+
+  
 
 router.get('/disconnect', (req, res) => {
   req.session.destroy(() => {
