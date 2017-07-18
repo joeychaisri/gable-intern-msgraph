@@ -52,31 +52,86 @@ router.get('/token',
     });
   });
 
+// router.get('/contacts',
+//   (req, res) => {
+//     const name = req.user.profile.displayName;
+//     graphHelper.getUserContact(req.user.accessToken, (err, contacts) => {
+//       console.log('People!');
+//       //  console.log(contacts.body.value);
+
+//     graphHelper.getUserEvent(req.user.accessToken, (err, events) => {
+//       console.log('Event!');
+      
+//       res.render('contacts', { contacts: contacts.body.value, name: name , events: events.body.value});
+//       // res.render('contacts', { events: events.body.value, name: name });
+      
+//     });     
+//     });   
+//   });
+
 router.get('/contacts',
   (req, res) => {
     const name = req.user.profile.displayName;
+     const info = { 
+  "attendees": [ 
+    { 
+      "type": "required",  
+      "emailAddress": { 
+        "name": "Pongsakorn Dechaprakrom",
+        "address": "T00401@g-able.com" 
+      } 
+    }
+  ],  
+  "locationConstraint": { 
+    "isRequired": "false",  
+    "suggestLocation": "false",  
+    "locations": [ 
+      { 
+        "resolveAvailability": "false",
+        "displayName": "Conf room Hood" 
+      } 
+    ] 
+  },  
+  "timeConstraint": {
+    "activityDomain":"work", 
+    "timeslots": [ 
+      { 
+        "start": { 
+          "dateTime": "2017-04-18T09:00:00",  
+          "timeZone": "UTC" 
+        },  
+        "end": { 
+          "dateTime": "2017-04-20T17:00:00",  
+          "timeZone": "UTC" 
+        } 
+      } 
+    ] 
+  },  
+  "meetingDuration": "PT2H",
+  "returnSuggestionReasons": "true",
+  "minimumAttendeePercentage": "100"
+}
+
     graphHelper.getUserContact(req.user.accessToken, (err, contacts) => {
       console.log('People!');
       //  console.log(contacts.body.value);
 
-    graphHelper.getUserEvent(req.user.accessToken, (err, events) => {
-      console.log('Event!');
+    graphHelper.postfindMeetingTimes(req.user.accessToken,info, (err, events) => {
+     
+
+      console.log('postToMeetingAPI');
+      // console.log(events.body)
+      console.log(events.body.meetingTimeSuggestions[0].meetingTimeSlot)
+      console.log(events.body.meetingTimeSuggestions[1].meetingTimeSlot)
+      console.log(events.body.meetingTimeSuggestions[2].meetingTimeSlot)
       
-      res.render('contacts', { contacts: contacts.body.value, name: name , events: events.body.value});
-      // res.render('contacts', { events: events.body.value, name: name });
+      // res.render('contacts', { contacts: contacts.body.value, name: name , events: events.body.value});
+
       
     });     
     });   
   });
 
-  // router.get('/contacts',
-  // (req, res) => {
-  //   const name = req.user.profile.displayName;
-  //   graphHelper.getUserContact(req.user.accessToken, (err, contacts) => {
-  //     console.log('People!');
-  //     res.render('contacts', { contacts: contacts.body.value, name: name });
-  //   });
-  // });
 
   
 
