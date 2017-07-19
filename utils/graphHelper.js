@@ -43,6 +43,7 @@ function postfindMeetingTimes(accessToken, info, callback) {
     .send(info)
     .set('Authorization', 'Bearer ' + accessToken)
     .set('Content-Type', 'application/json')
+    .set('Prefer' , 'outlook.timezone="SE Asia Standard Time"')
 
     .end((err, res) => {
       callback(err, res);

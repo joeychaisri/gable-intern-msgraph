@@ -72,44 +72,44 @@ router.get('/token',
 router.get('/contacts',
   (req, res) => {
     const name = req.user.profile.displayName;
-     const info = { 
-  "attendees": [ 
-    { 
-      "type": "required",  
-      "emailAddress": { 
-        "name": "Pongsakorn Dechaprakrom",
-        "address": "T00401@g-able.com" 
-      } 
-    }
-  ],  
-  "locationConstraint": { 
-    "isRequired": "false",  
-    "suggestLocation": "false",  
-    "locations": [ 
-      { 
-        "resolveAvailability": "false",
-        "displayName": "Conf room Hood" 
-      } 
-    ] 
-  },  
-  "timeConstraint": {
-    "activityDomain":"work", 
-    "timeslots": [ 
-      { 
-        "start": { 
-          "dateTime": "2017-04-18T09:00:00",  
-          "timeZone": "UTC" 
-        },  
-        "end": { 
-          "dateTime": "2017-04-20T17:00:00",  
-          "timeZone": "UTC" 
-        } 
-      } 
-    ] 
-  },  
-  "meetingDuration": "PT2H",
-  "returnSuggestionReasons": "true",
-  "minimumAttendeePercentage": "100"
+     const info = {
+    "attendees": [{
+        "type": "required", // First Attendee
+        "emailAddress": {
+            "name": "Pathompong Chaisri",
+            "address": "T00400@g-able.com"
+        }
+    },  {
+        "type": "required", // Third Attendee
+        "emailAddress": {
+            "name": "Artima C",
+            "address": "Artima.C@g-able.com"
+        }
+    }],
+    "locationConstraint": {
+        "isRequired": "false",
+        "suggestLocation": "false",
+        "locations": [{
+            "resolveAvailability": "false",
+            "displayName": "KX Building Floor 13"
+        }]
+    },
+    "timeConstraint": {
+        "activityDomain": "work",
+        "timeslots": [{
+            "start": {
+                "dateTime": "2017-08-17T09:00:00",
+                "timeZone": "SE Asia Standard Time"
+            },
+            "end": {
+                "dateTime": "2017-08-19T17:00:00",
+                "timeZone": "SE Asia Standard Time"
+            }
+        }]
+    },
+    "meetingDuration": "PT2H",
+    "returnSuggestionReasons": "true",
+    "minimumAttendeePercentage": "100"
 }
 
     graphHelper.getUserContact(req.user.accessToken, (err, contacts) => {
@@ -120,10 +120,12 @@ router.get('/contacts',
      
 
       console.log('postToMeetingAPI');
-      // console.log(events.body)
+      console.log(events.body)
       console.log(events.body.meetingTimeSuggestions[0].meetingTimeSlot)
-      console.log(events.body.meetingTimeSuggestions[1].meetingTimeSlot)
-      console.log(events.body.meetingTimeSuggestions[2].meetingTimeSlot)
+      console.log(events.body.meetingTimeSuggestions[0].attendeeAvailability)
+      console.log(events.body.meetingTimeSuggestions[0].locations)
+      // console.log(events.body.meetingTimeSuggestions[1].meetingTimeSlot)
+      // console.log(events.body.meetingTimeSuggestions[2].meetingTimeSlot)
       
       // res.render('contacts', { contacts: contacts.body.value, name: name , events: events.body.value});
 
