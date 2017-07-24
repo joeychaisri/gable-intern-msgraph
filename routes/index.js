@@ -88,7 +88,7 @@ router.get('/contacts',
     }],
     "locationConstraint": {
         "isRequired": "false",
-        "suggestLocation": "false",
+        "suggestLocation": "true",
         "locations": [{
             "resolveAvailability": "false",
             "displayName": "KX Building Floor 13"
@@ -98,11 +98,11 @@ router.get('/contacts',
         "activityDomain": "work",
         "timeslots": [{
             "start": {
-                "dateTime": "2017-08-17T09:00:00",
+                "dateTime": "2017-08-22T09:00:00",
                 "timeZone": "SE Asia Standard Time"
             },
             "end": {
-                "dateTime": "2017-08-19T17:00:00",
+                "dateTime": "2017-08-22T17:00:00",
                 "timeZone": "SE Asia Standard Time"
             }
         }]
@@ -120,10 +120,14 @@ router.get('/contacts',
      
 
       console.log('postToMeetingAPI');
-      console.log(events.body)
-      console.log(events.body.meetingTimeSuggestions[0].meetingTimeSlot)
-      console.log(events.body.meetingTimeSuggestions[0].attendeeAvailability)
+      // console.log(events.body)
+      // console.log(events.body.meetingTimeSuggestions[0].meetingTimeSlot)
+      // console.log(events.body.meetingTimeSuggestions[1].meetingTimeSlot)
+      // console.log(events.body.meetingTimeSuggestions[2].meetingTimeSlot)
+      // console.log(events.body.meetingTimeSuggestions[0].attendeeAvailability)
       console.log(events.body.meetingTimeSuggestions[0].locations)
+           console.log(events.body.meetingTimeSuggestions[1].locations)
+                console.log(events.body.meetingTimeSuggestions[2].locations)
       // console.log(events.body.meetingTimeSuggestions[1].meetingTimeSlot)
       // console.log(events.body.meetingTimeSuggestions[2].meetingTimeSlot)
       
