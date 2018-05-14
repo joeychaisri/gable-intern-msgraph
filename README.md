@@ -8,6 +8,6 @@
 โดยในแอพนี้ เมื่อ login ด้วยบัญชีของ MS จะแสดง email และ กิจกรรมใน calendar ออกมา
 
 
-## Build and run the sample
+## Build and run 
 - npm install
 - npm start 
